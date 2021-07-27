@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Grid from "@material-ui/core/Grid";
+
 import { Product } from "./Product";
 
 export const List = () => {
@@ -27,14 +29,16 @@ export const List = () => {
   };
 
   return (
-    <div>
+    <Grid container spacing={3}>
       {products.map((product) => (
-        <Product
-          title={product.title}
-          image={product.thumbnailUrl}
-          key={product.id}
-        />
+        <Grid item xs={4}>
+          <Product
+            title={product.title}
+            image={product.thumbnailUrl}
+            key={product.id}
+          />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
