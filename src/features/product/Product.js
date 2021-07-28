@@ -22,6 +22,10 @@ export const Product = (props) => {
   const { title, image } = props; //identique à const title = props.title
   const classes = useStyles();
   
+  const handleAddToCart = ()=>{
+    //ajouter au panier dans redux
+  }
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -37,7 +41,7 @@ export const Product = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={handleAddToCart}>
           Ajouter au panier
         </Button>
       </CardActions>
