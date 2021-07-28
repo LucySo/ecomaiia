@@ -13,10 +13,10 @@ export const List = () => {
   // une fonction qui va aller chercher la data sur l'api
   // fonction qui récupère data = fonction GET
   // elle retourne la liste des produits
-  const getProducts = async () => {
+  const getProducts = async (page, limit) => {
     //notation async / await pour les promises
     // aller chercher la data sur l'api
-    const result = await fetch("https://jsonplaceholder.typicode.com/photos");
+    const result = await fetch(`http://localhost:6060/products?_page=${page}&_limit=${limit}`);
     const data = await result.json();
     return data;
   };
