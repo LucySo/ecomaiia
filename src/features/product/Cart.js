@@ -3,5 +3,5 @@ export const Cart = () => {
     const products = []
 
 
-  return <div>Panier {products.length}</div>;
+  return <div>Panier : {products.length}</div>;
 };
