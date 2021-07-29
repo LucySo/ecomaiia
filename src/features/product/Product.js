@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../cart/cartSlice"
 
 const useStyles = makeStyles({
   root: {
@@ -19,11 +21,15 @@ const useStyles = makeStyles({
 });
 
 export const Product = (props) => {
-  const { title, image } = props; //identique à const title = props.title
+  const { product } = props
+  const { title, image } = product; //identique à const title = props.title
   const classes = useStyles();
   
+  const dispatch = useDispatch()
+
   const handleAddToCart = ()=>{
     //ajouter au panier dans redux
+    dispatch(addToCart(product))
   }
 
   return (

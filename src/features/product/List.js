@@ -32,8 +32,7 @@ export const List = () => {
         {productsRedux.map((product) => (
           <Grid item xs={12} sm={6} lg={4}>
             <Product
-              title={product.title}
-              image={product.url}
+              product={product}
               key={product.id}
             />
           </Grid>

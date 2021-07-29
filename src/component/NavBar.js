@@ -1,14 +1,15 @@
 import React from "react";
-import { Cart } from "../features/product/Cart";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import { useSelector } from 'react-redux';
+import {selectProducts} from "../features/cart/cartSlice" 
 
 export const NavBar = () => {
-  const productsInCart = [] // recupérer les productInCart depuis redux
+  const productsInCart = useSelector(selectProducts);
 
   return (
     <AppBar>
