@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run start:server`
+it runs the api on the localhost with port 6060
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
