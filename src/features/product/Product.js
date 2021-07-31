@@ -8,8 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch } from 'react-redux';
-import { addToCart } from "../cart/cartSlice"
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, selectProducts } from "../cart/cartSlice"
 
 const useStyles = makeStyles({
   root: {
@@ -22,8 +22,10 @@ const useStyles = makeStyles({
 
 export const Product = (props) => {
   const { product } = props
-  const { title, image } = product; //identique à const title = props.title
+  const { title, url, id } = product; //identique à const title = props.title
   const classes = useStyles();
+  const productsInCart = useSelector(selectProducts)
+  const productAlreadyInCart = (productsInCart.map(p=>p.id).includes(id))
   
   const dispatch = useDispatch()
 
@@ -37,7 +39,7 @@ export const Product = (props) => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={image}
+          image={url}
           title={title}
         />
         <CardContent>
@@ -47,8 +49,8 @@ export const Product = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleAddToCart}>
-          Ajouter au panier
+        <Button size="small" color="primary" onClick={handleAddToCart} disabled={productAlreadyInCart}>
+          {productAlreadyInCart ? "Déjà dans le panier !" : "Ajouter au panier"}
         </Button>
       </CardActions>
     </Card>
