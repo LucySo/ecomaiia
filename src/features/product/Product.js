@@ -12,12 +12,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, selectProducts } from "../cart/cartSlice"
 
 const useStyles = makeStyles({
-  root: {
+  card: {
     maxWidth: 345,
+    margin : 12
   },
   media: {
     height: 345,
+    width : 345
   },
+  text : {
+    height : 25
+  }
 });
 
 export const Product = (props) => {
@@ -35,7 +40,7 @@ export const Product = (props) => {
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -43,12 +48,12 @@ export const Product = (props) => {
           title={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
             {title}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions >
         <Button size="small" color="primary" onClick={handleAddToCart} disabled={productAlreadyInCart}>
           {productAlreadyInCart ? "Déjà dans le panier !" : "Ajouter au panier"}
         </Button>
